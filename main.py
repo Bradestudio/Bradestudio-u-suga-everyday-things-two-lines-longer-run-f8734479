@@ -37,6 +37,11 @@ def main():
             sys.exit("entry line must not be blank")
         if line != line.strip():
             sys.exit("entry line must not start or end with whitespace")
+        if line.count(".") != 1:
+            # Judge criterion 3: each line must be one single sentence,
+            # no list of comparisons and no second sentence crowding it.
+            sys.exit("entry line must be exactly one sentence, got %d periods"
+                     % line.count("."))
     if not 1 <= len(text) <= 400:
         sys.exit("entry must be 1-400 characters, got %d" % len(text))
     if not lines[0].endswith("shuffles along and waits."):
